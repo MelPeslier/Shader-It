@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://dx2xx3ax2om7t"]
+
+[ext_resource type="Texture2D" uid="uid://c3ph2hshn6b30" path="res://icon.svg" id="1_owhkn"]
+[ext_resource type="Shader" path="res://toneMapping/tone_mapping.gdshader" id="1_sit3o"]
+
+[sub_resource type="Gradient" id="Gradient_i2ym7"]
+offsets = PackedFloat32Array(0.170543, 0.224806, 0.627907, 0.674419)
+colors = PackedColorArray(0, 1, 0, 1, 0.671348, 0.277533, 0.365362, 1, 0.545098, 0, 0.121569, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rpm5x"]
+gradient = SubResource("Gradient_i2ym7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cmley"]
+shader = ExtResource("1_sit3o")
+shader_parameter/scale = 1.0
+shader_parameter/gradient = SubResource("GradientTexture2D_rpm5x")
+
+[node name="ToneMapping" type="Sprite2D"]
+material = SubResource("ShaderMaterial_cmley")
+position = Vector2(403, 133)
+texture = ExtResource("1_owhkn")

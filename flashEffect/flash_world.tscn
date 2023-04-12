@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://df6eb22g17iq4"]
+
+[ext_resource type="Shader" path="res://flashEffect/flash_effect.gdshader" id="1_aluj3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdhwh"]
+shader = ExtResource("1_aluj3")
+shader_parameter/flashColor = Color(1, 1, 1, 1)
+shader_parameter/flashState = 0.0
+
+[node name="FlashWorld" type="Node2D"]
+material = SubResource("ShaderMaterial_jdhwh")

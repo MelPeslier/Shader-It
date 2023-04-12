@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://gpw843neskhp"]
+
+[ext_resource type="Texture2D" uid="uid://c3ph2hshn6b30" path="res://icon.svg" id="1_3kxll"]
+[ext_resource type="Shader" path="res://flashEffect/flash_effect.gdshader" id="1_un0ct"]
+[ext_resource type="AnimationLibrary" uid="uid://qlp3gt6diyfn" path="res://LibraryAnimate.res" id="3_7uqhj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wvm2g"]
+resource_local_to_scene = true
+shader = ExtResource("1_un0ct")
+shader_parameter/flashColor = Color(1, 1, 1, 1)
+shader_parameter/flashState = 0.0
+
+[node name="FlashEffect" type="Sprite2D"]
+material = SubResource("ShaderMaterial_wvm2g")
+position = Vector2(414, 196)
+texture = ExtResource("1_3kxll")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"My_first_animation_library": ExtResource("3_7uqhj")
+}

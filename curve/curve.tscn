@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsahfccwio2nu"]
+
+[ext_resource type="Shader" path="res://curve/curve.gdshader" id="1_kj0ep"]
+[ext_resource type="Texture2D" uid="uid://c3ph2hshn6b30" path="res://icon.svg" id="1_nncb1"]
+
+[sub_resource type="Curve" id="Curve_lhngj"]
+_data = [Vector2(0, 0.627273), 0.0, 0.0, 0, 0, Vector2(0.138408, 0.354545), 0.0, 0.0, 0, 0, Vector2(0.228374, 0.718182), 0.0, 0.0, 0, 0, Vector2(0.411765, 0.5), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_uqfud"]
+curve = SubResource("Curve_lhngj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cmetn"]
+shader = ExtResource("1_kj0ep")
+shader_parameter/curve = SubResource("CurveTexture_uqfud")
+
+[node name="Curve" type="Sprite2D"]
+position = Vector2(421.5, 318)
+scale = Vector2(6.10156, 4.70313)
+texture = ExtResource("1_nncb1")
+
+[node name="WhereTo" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_cmetn")
+position = Vector2(20.0768, -2.5515)
+scale = Vector2(0.346183, 0.26728)
+texture = ExtResource("1_nncb1")

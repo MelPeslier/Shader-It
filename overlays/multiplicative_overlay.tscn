@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5wubq8urj3cv"]
+
+[ext_resource type="Shader" path="res://overlays/multiplicative_overlay.gdshader" id="1_4mo7m"]
+[ext_resource type="Texture2D" uid="uid://c3ph2hshn6b30" path="res://icon.svg" id="2_4g1lq"]
+
+[sub_resource type="Gradient" id="Gradient_csdv7"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.209302, 0.44186, 0.918605)
+colors = PackedColorArray(0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bpxma"]
+gradient = SubResource("Gradient_csdv7")
+fill_from = Vector2(0.0726496, 0.65812)
+fill_to = Vector2(0.935897, 0.123932)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6kcif"]
+shader = ExtResource("1_4mo7m")
+shader_parameter/scale = 0.2
+shader_parameter/gradient = SubResource("GradientTexture2D_bpxma")
+
+[node name="MultiplicativeOverlay" type="Sprite2D"]
+material = SubResource("ShaderMaterial_6kcif")
+position = Vector2(217, 201)
+texture = ExtResource("2_4g1lq")

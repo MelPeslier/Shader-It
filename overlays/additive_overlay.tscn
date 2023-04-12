@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgcwxayr1llns"]
+
+[ext_resource type="Shader" path="res://overlays/additive_overlay.gdshader" id="1_6nrtd"]
+[ext_resource type="Texture2D" uid="uid://c3ph2hshn6b30" path="res://icon.svg" id="1_fikpb"]
+
+[sub_resource type="Gradient" id="Gradient_cvolk"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 1, 0.356863)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_64t7n"]
+gradient = SubResource("Gradient_cvolk")
+fill_from = Vector2(0.166667, 0.683761)
+fill_to = Vector2(0.0555556, 0.705128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_prktp"]
+shader = ExtResource("1_6nrtd")
+shader_parameter/scale = 0.7
+shader_parameter/gradient = SubResource("GradientTexture2D_64t7n")
+
+[node name="AdditiveOverlay" type="Sprite2D"]
+material = SubResource("ShaderMaterial_prktp")
+position = Vector2(268, 119)
+texture = ExtResource("1_fikpb")
