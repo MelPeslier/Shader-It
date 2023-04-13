@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4ecr0nkmextv"]
+
+[ext_resource type="PackedScene" uid="uid://cfnhoyicg1beb" path="res://3Dwatershader/water.tscn" id="1_23b8n"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1ks4r"]
+
+[node name="Map" type="Node3D"]
+
+[node name="Water" parent="." instance=ExtResource("1_23b8n")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.193185, -0.0517638, 0, 0.0517638, 0.193185, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_1ks4r")
