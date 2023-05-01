@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://5ube17dudx1n"]
+
+[ext_resource type="Shader" path="res://00_Tests/animated_slashes.gdshader" id="1_jcbp7"]
+[ext_resource type="Texture2D" uid="uid://cl6jypm5w6vyd" path="res://00_Tests/slash.png" id="1_u7y8g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aid2p"]
+shader = ExtResource("1_jcbp7")
+
+[sub_resource type="Gradient" id="Gradient_f4010"]
+offsets = PackedFloat32Array(0, 0.907407, 0.977778)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cmspd"]
+gradient = SubResource("Gradient_f4010")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eqh88"]
+emission_shape = 3
+emission_box_extents = Vector3(50, 50, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 360.0
+scale_min = 0.1
+scale_max = 0.1
+color_ramp = SubResource("GradientTexture1D_cmspd")
+
+[node name="AnimatedSlashes" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_aid2p")
+position = Vector2(201, 226)
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_eqh88")
+texture = ExtResource("1_u7y8g")
+visibility_rect = Rect2(-25, -25, 50, 50)
