@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://de7q60el0ciwl"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Texture2D" uid="uid://c3ph2hshn6b30" path="res://icon.svg" id="1_jx8mj"]
 [ext_resource type="Shader" path="res://distortionEffect/distortion_effect.gdshader" id="2_f3ool"]

@@ -1,23 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfwfyjwvv7bxy"]
+[gd_scene load_steps=5 format=3 uid="uid://8ko7typ3rrhp"]
 
-[ext_resource type="Texture2D" uid="uid://c3ph2hshn6b30" path="res://icon.svg" id="1_8uk35"]
-[ext_resource type="Shader" path="res://colorScale/colorScale.gdshader" id="1_b8jl8"]
-[ext_resource type="Script" path="res://colorScale/colorScale.gd" id="3_ojxa7"]
+[ext_resource type="Shader" path="res://Level1/colorScale/colorScale.gdshader" id="1_ywtqk"]
+[ext_resource type="Texture2D" uid="uid://c3ph2hshn6b30" path="res://icon.svg" id="2_hof6g"]
+[ext_resource type="Script" path="res://colorScale/colorScale.gd" id="3_jftgg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cj1u8"]
-shader = ExtResource("1_b8jl8")
+shader = ExtResource("1_ywtqk")
 shader_parameter/transparency = 1.0
 shader_parameter/intensity = 3.0
-shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/color = Color(1, 0.270588, 1, 1)
 shader_parameter/red_intensity = 1.0
 shader_parameter/green_intensity = 1.0
 shader_parameter/blue_intensity = 1.0
 shader_parameter/is_normal = 0.0
-shader_parameter/is_gray = 1.0
 
 [node name="ColorScale" type="Sprite2D"]
 modulate = Color(0.988235, 0.968627, 0.960784, 1)
 material = SubResource("ShaderMaterial_cj1u8")
 position = Vector2(487, 210)
-texture = ExtResource("1_8uk35")
-script = ExtResource("3_ojxa7")
+texture = ExtResource("2_hof6g")
+script = ExtResource("3_jftgg")

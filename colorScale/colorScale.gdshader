@@ -9,8 +9,7 @@ uniform float red_intensity : hint_range(0.0, 1.0, 0.1) = 1.0;
 uniform float green_intensity : hint_range(0.0, 1.0, 0.1) = 1.0;
 uniform float blue_intensity : hint_range(0.0, 1.0, 0.1) = 1.0;
 
-uniform float is_normal : hint_range(0.0, 1.0, 1.0) = 1.0;
-uniform float is_gray : hint_range(0.0, 1.0, 1.0) = 0.0;
+uniform bool is_normal = true;
 
 void fragment() {
 	vec4 pixelColor = texture(TEXTURE, UV);
@@ -30,6 +29,9 @@ void fragment() {
 	float a = pixelColor.a * transparency;
 	vec4 grayScale = vec4(brightness, brightness, brightness, a);
 	
-	//
-	COLOR = (grayScale * is_gray + normal * is_normal) * color;
+	if (is_normal){
+		COLOR = normal * color;
+	}else{
+		COLOR = grayScale * color;
+	}
 }

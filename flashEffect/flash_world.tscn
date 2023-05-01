@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://df6eb22g17iq4"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Shader" path="res://flashEffect/flash_effect.gdshader" id="1_aluj3"]
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4ecr0nkmextv"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="PackedScene" uid="uid://cfnhoyicg1beb" path="res://3Dwatershader/water.tscn" id="1_23b8n"]
+[ext_resource type="PackedScene" uid="uid://cfnhoyicg1beb" path="res://Level1/3Dwatershader/water.tscn" id="1_23b8n"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_1ks4r"]
 
