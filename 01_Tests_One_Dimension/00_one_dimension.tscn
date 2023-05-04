@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://douc1tsoc7xrv"]
+
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/00_one_dimension.gdshader" id="1_m5bxb"]
+[ext_resource type="PackedScene" uid="uid://bheug387fn8rr" path="res://01_Tests_One_Dimension/simple_line.tscn" id="1_xv3k7"]
+
+[sub_resource type="Gradient" id="Gradient_pntxb"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m4rac"]
+gradient = SubResource("Gradient_pntxb")
+
+[sub_resource type="Gradient" id="Gradient_mldcx"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_laux4"]
+gradient = SubResource("Gradient_mldcx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flc2v"]
+resource_local_to_scene = true
+shader = ExtResource("1_m5bxb")
+shader_parameter/size = 0.717
+shader_parameter/smoothness = 0.0
+shader_parameter/bg_color = SubResource("GradientTexture1D_m4rac")
+shader_parameter/line_color = SubResource("GradientTexture1D_laux4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1el4r"]
+resource_local_to_scene = true
+shader = ExtResource("1_m5bxb")
+shader_parameter/size = 0.131
+shader_parameter/smoothness = 0.696
+shader_parameter/bg_color = SubResource("GradientTexture1D_m4rac")
+shader_parameter/line_color = SubResource("GradientTexture1D_laux4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nqt4p"]
+resource_local_to_scene = true
+shader = ExtResource("1_m5bxb")
+shader_parameter/size = 0.415
+shader_parameter/smoothness = 0.393
+shader_parameter/bg_color = SubResource("GradientTexture1D_m4rac")
+shader_parameter/line_color = SubResource("GradientTexture1D_laux4")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="00_simple_line" parent="." instance=ExtResource("1_xv3k7")]
+material = SubResource("ShaderMaterial_flc2v")
+
+[node name="00_simple_line2" parent="." instance=ExtResource("1_xv3k7")]
+material = SubResource("ShaderMaterial_1el4r")
+position = Vector2(40, 40)
+
+[node name="00_simple_line3" parent="." instance=ExtResource("1_xv3k7")]
+material = SubResource("ShaderMaterial_nqt4p")
+position = Vector2(40, 8)

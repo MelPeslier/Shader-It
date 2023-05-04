@@ -1,0 +1,115 @@
+[gd_scene load_steps=15 format=3 uid="uid://b8cdgjmg1sce4"]
+
+[ext_resource type="PackedScene" uid="uid://do8gxiaq0yyn3" path="res://01_Tests_One_Dimension/fx.tscn" id="1_euvlb"]
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/fx.gdshader" id="2_qpbkg"]
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/almost_identity2.gdshader" id="3_75eid"]
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/almost_identity.gdshader" id="3_qo4ik"]
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/almost_unit_identity.gdshader" id="5_gmga2"]
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/integral_smooth_step.gdshader" id="6_vfhnr"]
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/exponential_impusle.gdshader" id="7_31loo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hedhs"]
+resource_local_to_scene = true
+shader = ExtResource("2_qpbkg")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/size = 0.04
+shader_parameter/smoothness = 0.039
+shader_parameter/taille_graph = 10.0
+shader_parameter/puissance = 3.0
+shader_parameter/speed = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_18rrw"]
+resource_local_to_scene = true
+shader = ExtResource("3_qo4ik")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 3.0
+shader_parameter/treshold = 0.0
+shader_parameter/new_value = 0.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_bvbol"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vwpvp"]
+resource_local_to_scene = true
+shader = ExtResource("3_75eid")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 3.0
+shader_parameter/treshold = 0.0
+shader_parameter/speed = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7inwv"]
+resource_local_to_scene = true
+shader = ExtResource("5_gmga2")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 3.0
+shader_parameter/treshold = 5.0
+shader_parameter/speed = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_47som"]
+resource_local_to_scene = true
+shader = ExtResource("6_vfhnr")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 3.0
+shader_parameter/treshold = 2.375e-07
+shader_parameter/speed = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vsb4u"]
+resource_local_to_scene = true
+shader = ExtResource("7_31loo")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 3.0
+shader_parameter/stretching = -2.403
+shader_parameter/speed = 1.0
+shader_parameter/range = 5.0
+
+[node name="02_Fx" type="Node2D"]
+
+[node name="sin_cos" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_hedhs")
+position = Vector2(32, 32)
+scale = Vector2(64, 64)
+
+[node name="almost_identity" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_18rrw")
+position = Vector2(104, 32)
+scale = Vector2(64, 64)
+texture = SubResource("CanvasTexture_bvbol")
+
+[node name="almost_identity2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_vwpvp")
+position = Vector2(176, 32)
+scale = Vector2(64, 64)
+texture = SubResource("CanvasTexture_bvbol")
+
+[node name="almost_unit_identity" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_7inwv")
+position = Vector2(248, 32)
+scale = Vector2(64, 64)
+texture = SubResource("CanvasTexture_bvbol")
+
+[node name="integral_smooth_step" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_47som")
+position = Vector2(320, 32)
+scale = Vector2(64, 64)
+texture = SubResource("CanvasTexture_bvbol")
+
+[node name="exponential_impusle" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_vsb4u")
+position = Vector2(392, 32)
+scale = Vector2(64, 64)
+texture = SubResource("CanvasTexture_bvbol")

@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3gc3ful2ermw"]
+
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/01_simple_curve.gdshader" id="1_dh1iy"]
+
+[sub_resource type="Gradient" id="Gradient_nc326"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6qms7"]
+gradient = SubResource("Gradient_nc326")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_04kco"]
+shader = ExtResource("1_dh1iy")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/size = 0.02
+shader_parameter/smoothness = 0.0
+shader_parameter/puissance = 2.656
+shader_parameter/bg_color = SubResource("GradientTexture1D_6qms7")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_cgg35"]
+
+[node name="01_simple_curve" type="Node2D"]
+
+[node name="simple_curve_sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_04kco")
+position = Vector2(8, 8)
+scale = Vector2(16, 16)
+texture = SubResource("CanvasTexture_cgg35")
+
+[node name="simple_curve_sprite2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_04kco")
+position = Vector2(32, 16)
+scale = Vector2(16, 16)
+texture = SubResource("CanvasTexture_cgg35")

@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://bheug387fn8rr"]
+
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/00_one_dimension.gdshader" id="1_uqpan"]
+
+[sub_resource type="Gradient" id="Gradient_pntxb"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m4rac"]
+gradient = SubResource("Gradient_pntxb")
+
+[sub_resource type="Gradient" id="Gradient_mldcx"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_laux4"]
+gradient = SubResource("Gradient_mldcx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0ksv"]
+resource_local_to_scene = true
+shader = ExtResource("1_uqpan")
+shader_parameter/size = 0.131
+shader_parameter/smoothness = 0.0
+shader_parameter/bg_color = SubResource("GradientTexture1D_m4rac")
+shader_parameter/line_color = SubResource("GradientTexture1D_laux4")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_p00b4"]
+
+[node name="00_simple_line" type="Sprite2D"]
+material = SubResource("ShaderMaterial_r0ksv")
+position = Vector2(8, 8)
+scale = Vector2(16, 16)
+texture = SubResource("CanvasTexture_p00b4")
