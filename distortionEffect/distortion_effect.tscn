@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://dpgecnay5kjvd"]
 
 [ext_resource type="Texture2D" uid="uid://c3ph2hshn6b30" path="res://icon.svg" id="1_jx8mj"]
 [ext_resource type="Shader" path="res://distortionEffect/distortion_effect.gdshader" id="2_f3ool"]
@@ -26,6 +26,6 @@ texture = ExtResource("1_jx8mj")
 
 [node name="WhereTo" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ldepa")
-position = Vector2(182.035, -14.521)
+position = Vector2(154.575, -30.6554)
 scale = Vector2(7.35528, 5.49665)
 texture = ExtResource("3_fobr2")

@@ -16,7 +16,7 @@ float integral_smooth_step(float x, float T){
 }
 
 float f(vec2 uv){
-	return abs(integral_smooth_step(uv.x, cos(treshold + TIME * speed)) - uv.y);
+	return abs(integral_smooth_step(-uv.x, cos(treshold + TIME * speed)) - uv.y);
 }
 
 void fragment() {

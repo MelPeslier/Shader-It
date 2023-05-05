@@ -9,11 +9,11 @@ uniform float puissance : hint_range(0.01, 10.0) = 3.0;
 uniform float speed : hint_range(0.0, 1.0) = 1.0;
 
 float f_sinus(vec2 tex_uv){
-	return smoothstep(size, smoothness, abs(sin(tex_uv.x * puissance + TIME * speed) - tex_uv.y));
+	return smoothstep(size, smoothness, abs(sin(-tex_uv.x * puissance + TIME * speed) - tex_uv.y));
 }
 
 float f_cosinus(vec2 tex_uv){
-	return smoothstep(size, smoothness, abs(cos(tex_uv.x * puissance + TIME * speed) - tex_uv.y));
+	return smoothstep(size, smoothness, abs(cos(-tex_uv.x * puissance + TIME * speed) - tex_uv.y));
 }
 
 void fragment() {

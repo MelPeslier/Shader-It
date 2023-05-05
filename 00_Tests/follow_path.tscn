@@ -214,7 +214,7 @@ gradient = SubResource("Gradient_thjo2")
 [sub_resource type="Curve" id="Curve_sc4qh"]
 min_value = -5.0
 max_value = 5.0
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.395349, -2.09091), 0.0, 0.0, 0, 0, Vector2(0.681063, 3), 0.0, 0.0, 0, 0, Vector2(0.996678, 0.090909), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.245847, -4.90909), 0.0, 0.0, 0, 0, Vector2(0.607973, 5), 0.0, 0.0, 0, 0, Vector2(0.996678, 0.090909), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_m1so2"]
@@ -226,7 +226,7 @@ shader = SubResource("Shader_arokf")
 shader_parameter/direction = Vector3(1, 0, 0)
 shader_parameter/spread = 30.0
 shader_parameter/flatness = 0.0
-shader_parameter/initial_linear_velocity_min = 50.0
+shader_parameter/initial_linear_velocity_min = 200.0
 shader_parameter/initial_angle_min = 0.0
 shader_parameter/angular_velocity_min = 0.0
 shader_parameter/orbit_velocity_min = 0.0
@@ -238,7 +238,7 @@ shader_parameter/scale_min = 0.01
 shader_parameter/hue_variation_min = 0.0
 shader_parameter/anim_speed_min = 0.0
 shader_parameter/anim_offset_min = 0.0
-shader_parameter/initial_linear_velocity_max = 50.0
+shader_parameter/initial_linear_velocity_max = 200.0
 shader_parameter/initial_angle_max = 0.0
 shader_parameter/angular_velocity_max = 0.0
 shader_parameter/orbit_velocity_max = 0.0
@@ -261,7 +261,6 @@ shader_parameter/curve = SubResource("CurveTexture_m1so2")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(181, 265)
-emitting = false
 amount = 500
 process_material = SubResource("ShaderMaterial_daeao")
 texture = ExtResource("1_7et1t")

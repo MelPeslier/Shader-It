@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=8 format=3]
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://d0vv22b0rf4l5"]
 
 [ext_resource type="Shader" path="res://3Dwatershader/water.gdshader" id="1_eqevj"]
 
@@ -30,8 +30,8 @@ noise = SubResource("FastNoiseLite_rxjta")
 [resource]
 render_priority = 0
 shader = ExtResource("1_eqevj")
-shader_parameter/albedo = Color(0, 0.321569, 0.431373, 1)
-shader_parameter/albedo_fresnel = Color(0.0156863, 0.584314, 0.584314, 1)
+shader_parameter/albedo = Color(0, 0.501961, 0.290196, 1)
+shader_parameter/albedo_fresnel = Color(1, 0, 0, 1)
 shader_parameter/metallic = 0.04
 shader_parameter/roughness = 0.02
 shader_parameter/wave_direction = Vector2(2, 0)

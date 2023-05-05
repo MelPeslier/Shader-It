@@ -7,7 +7,7 @@ uniform float line_smoothness : hint_range(0.0, 1.0) = 0.039;
 uniform float taille_graph : hint_range(0.5, 20.0) = 3.0;
 uniform float stretching : hint_range(-5.0, 10.0);
 uniform float speed : hint_range(0.0, 2.0) = 1.0;
-uniform float range : hint_range(0.1, 20.0) = 5.0;
+uniform float range : hint_range(-20.0, 20.0) = 5.0;
 
 float exponential_impusle(float x, float k){
 	float h = k * x;
@@ -15,7 +15,7 @@ float exponential_impusle(float x, float k){
 }
 
 float f(vec2 uv){
-	return abs(exponential_impusle(uv.x, cos(TIME * speed) * range) - uv.y);
+	return abs(exponential_impusle(-uv.x, abs(cos(TIME * speed)) * range) - uv.y);
 }
 
 void fragment() {

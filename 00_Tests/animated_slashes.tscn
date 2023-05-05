@@ -30,8 +30,6 @@ color_ramp = SubResource("GradientTexture1D_cmspd")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_aid2p")
 position = Vector2(201, 226)
-emitting = false
-amount = 16
 process_material = SubResource("ParticleProcessMaterial_eqh88")
 texture = ExtResource("1_u7y8g")
 visibility_rect = Rect2(-25, -25, 50, 50)

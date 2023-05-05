@@ -9,11 +9,11 @@ uniform float treshold : hint_range(-5.0, 5.0);
 uniform float speed : hint_range(0.0, 2.0) = 1.0;
 
 float almost_unit_identity(float x){
-	return x * x * (cos(treshold + TIME * speed) - x);
+	return x * x * (treshold * abs(cos(TIME * speed)) - x);
 }
 
 float f(vec2 uv){
-	return abs(almost_unit_identity(uv.x) - uv.y);
+	return abs(almost_unit_identity(-uv.x) - uv.y);
 }
 
 void fragment() {

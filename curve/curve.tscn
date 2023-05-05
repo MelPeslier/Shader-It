@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://bgbd2es55bunf"]
 
 [ext_resource type="Shader" path="res://curve/curve.gdshader" id="1_kj0ep"]
 [ext_resource type="Texture2D" uid="uid://c3ph2hshn6b30" path="res://icon.svg" id="1_nncb1"]
@@ -21,6 +21,6 @@ texture = ExtResource("1_nncb1")
 
 [node name="WhereTo" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_cmetn")
-position = Vector2(20.0768, -2.5515)
+position = Vector2(2.54034, -4.03986)
 scale = Vector2(0.346183, 0.26728)
 texture = ExtResource("1_nncb1")

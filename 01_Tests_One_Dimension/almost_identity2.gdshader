@@ -5,7 +5,7 @@ uniform vec4 line_color : source_color = vec4(vec3(1.0), 1.0);
 uniform float line_width : hint_range(0.0, 1.0) = 0.04;
 uniform float line_smoothness : hint_range(0.0, 1.0) = 0.039;
 uniform float taille_graph : hint_range(0.5, 20.0) = 3.0;
-uniform float treshold : hint_range(0.0, 5.0);
+uniform float treshold : hint_range(-10.0, 10.0);
 uniform float speed : hint_range(0.0, 2.0) = 1.0;
 
 float almost_identity2(float x, float n){
@@ -13,7 +13,7 @@ float almost_identity2(float x, float n){
 }
 
 float f(vec2 uv){
-	return abs(almost_identity2(uv.x, cos(treshold + TIME * speed)) - uv.y);
+	return abs(almost_identity2(-uv.x, treshold + cos(TIME * speed)) - uv.y);
 }
 
 void fragment() {
