@@ -1,0 +1,28 @@
+[gd_resource type="Shader" format=3 uid="uid://c46xnr7fkf76j"]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform vec4 bg_color : source_color = vec4(vec3(0.0), 1.0);
+uniform vec4 line_color : source_color = vec4(vec3(1.0), 1.0);
+uniform float line_width : hint_range(0.0, 1.0) = 0.04;
+uniform float line_smoothness : hint_range(0.0, 1.0) = 0.039;
+uniform float taille_graph : hint_range(0.5, 20.0) = 3.0;
+uniform float left : hint_range(0.01, 10.0) = 1.0;
+uniform float right : hint_range(0.01, 10.0) = 1.0;
+
+float power_curve(float x, float a, float b){
+	float k = pow(a + b, a + b) / (pow(a, a) * pow(b, b));
+	return k * pow(x, a) * pow(1.0 - x, b);
+}
+
+float f(vec2 uv){
+	return abs(power_curve(uv.x, left, right) - 1.0 + uv.y);
+}
+
+void fragment() {
+	float mix_value = smoothstep(line_width, line_smoothness,
+		f(UV));
+	
+	COLOR = mix(bg_color, line_color, mix_value);
+}"

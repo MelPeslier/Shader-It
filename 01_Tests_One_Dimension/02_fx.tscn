@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b8cdgjmg1sce4"]
+[gd_scene load_steps=39 format=3 uid="uid://b8cdgjmg1sce4"]
 
 [ext_resource type="PackedScene" uid="uid://do8gxiaq0yyn3" path="res://01_Tests_One_Dimension/fx.tscn" id="1_euvlb"]
 [ext_resource type="Shader" path="res://01_Tests_One_Dimension/fx.gdshader" id="2_qpbkg"]
@@ -16,7 +16,9 @@
 [ext_resource type="Shader" uid="uid://dvs4trqpg1uj4" path="res://01_Tests_One_Dimension/parabola.tres" id="14_7rsgh"]
 [ext_resource type="Shader" uid="uid://ddox3h7xj6i6c" path="res://01_Tests_One_Dimension/power_curve.tres" id="15_y6pem"]
 [ext_resource type="Shader" path="res://01_Tests_One_Dimension/sinc_curve.gdshader" id="16_d02yj"]
+[ext_resource type="Shader" uid="uid://c46xnr7fkf76j" path="res://01_Tests_One_Dimension/power_curve_between_0_and_1.tres" id="16_vrv2h"]
 [ext_resource type="Shader" uid="uid://blloggkmias6g" path="res://01_Tests_One_Dimension/trunc_falloff.tres" id="17_qb6l1"]
+[ext_resource type="Shader" uid="uid://cuo5o36qsp0aw" path="res://01_Tests_One_Dimension/special_one.tres" id="18_rnyon"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1mpi1"]
 resource_local_to_scene = true
@@ -171,8 +173,19 @@ shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_width = 0.04
 shader_parameter/line_smoothness = 0.039
 shader_parameter/taille_graph = 3.0
-shader_parameter/left = 0.296
-shader_parameter/right = 2.601
+shader_parameter/left = 0.6
+shader_parameter/right = 4.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_if0f7"]
+resource_local_to_scene = true
+shader = ExtResource("16_vrv2h")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 3.0
+shader_parameter/left = 0.6
+shader_parameter/right = 4.3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s0cag"]
 resource_local_to_scene = true
@@ -193,6 +206,16 @@ shader_parameter/line_width = 0.04
 shader_parameter/line_smoothness = 0.039
 shader_parameter/taille_graph = 3.0
 shader_parameter/stop_point = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l7q6f"]
+resource_local_to_scene = true
+shader = ExtResource("18_rnyon")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 3.0
+shader_parameter/stop_point = 0.577
 
 [node name="02_Fx" type="Node2D"]
 
@@ -271,12 +294,22 @@ material = SubResource("ShaderMaterial_d7gy7")
 position = Vector2(104, 176)
 scale = Vector2(64, 64)
 
+[node name="power_curve_between_0_and_1" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_if0f7")
+position = Vector2(176, 176)
+scale = Vector2(64, 64)
+
 [node name="sinc_curve" parent="." instance=ExtResource("1_euvlb")]
 material = SubResource("ShaderMaterial_s0cag")
-position = Vector2(176, 176)
+position = Vector2(248, 176)
 scale = Vector2(64, 64)
 
 [node name="trunc_falloff" parent="." instance=ExtResource("1_euvlb")]
 material = SubResource("ShaderMaterial_84vja")
-position = Vector2(248, 176)
+position = Vector2(320, 176)
+scale = Vector2(64, 64)
+
+[node name="special_one" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_l7q6f")
+position = Vector2(392, 176)
 scale = Vector2(64, 64)

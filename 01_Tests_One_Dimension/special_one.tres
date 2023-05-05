@@ -1,0 +1,27 @@
+[gd_resource type="Shader" format=3 uid="uid://cuo5o36qsp0aw"]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform vec4 bg_color : source_color = vec4(vec3(0.0), 1.0);
+uniform vec4 line_color : source_color = vec4(vec3(1.0), 1.0);
+uniform float line_width : hint_range(0.0, 1.0) = 0.04;
+uniform float line_smoothness : hint_range(0.0, 1.0) = 0.039;
+uniform float taille_graph : hint_range(0.5, 20.0) = 3.0;
+uniform float stop_point : hint_range(-5.0, 5.0) = 0.0;
+
+
+float trunc_falloff(float x, float m){
+	return 1.0 - pow(max(0.0, abs(x) * 2.0 - 1.0), m);
+}
+
+float f(vec2 uv){
+	return abs(trunc_falloff(-uv.x, stop_point) - uv.y);
+}
+
+void fragment() {
+	float mix_value = smoothstep(line_width, line_smoothness,
+		f(taille_graph / 2.0 - UV * taille_graph));
+	
+	COLOR = mix(bg_color, line_color, mix_value);
+}"
