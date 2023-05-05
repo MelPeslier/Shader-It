@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8cdgjmg1sce4"]
+[gd_scene load_steps=35 format=3 uid="uid://b8cdgjmg1sce4"]
 
 [ext_resource type="PackedScene" uid="uid://do8gxiaq0yyn3" path="res://01_Tests_One_Dimension/fx.tscn" id="1_euvlb"]
 [ext_resource type="Shader" path="res://01_Tests_One_Dimension/fx.gdshader" id="2_qpbkg"]
@@ -9,6 +9,14 @@
 [ext_resource type="Shader" path="res://01_Tests_One_Dimension/integral_smooth_step.gdshader" id="6_vfhnr"]
 [ext_resource type="Shader" path="res://01_Tests_One_Dimension/exponential_impusle.gdshader" id="7_31loo"]
 [ext_resource type="Shader" path="res://01_Tests_One_Dimension/polynomial_impulse.gdshader" id="9_k6avx"]
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/sustained_impulse.gdshader" id="10_s2ovd"]
+[ext_resource type="Shader" uid="uid://bbjhvilsvm2sf" path="res://01_Tests_One_Dimension/cubic_pulse.tres" id="11_ypced"]
+[ext_resource type="Shader" uid="uid://lpgn28eueriw" path="res://01_Tests_One_Dimension/exponential_step.tres" id="12_xunrg"]
+[ext_resource type="Shader" uid="uid://dkohcshpuhob8" path="res://01_Tests_One_Dimension/gain.tres" id="13_3p2mp"]
+[ext_resource type="Shader" uid="uid://dvs4trqpg1uj4" path="res://01_Tests_One_Dimension/parabola.tres" id="14_7rsgh"]
+[ext_resource type="Shader" uid="uid://ddox3h7xj6i6c" path="res://01_Tests_One_Dimension/power_curve.tres" id="15_y6pem"]
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/sinc_curve.gdshader" id="16_d02yj"]
+[ext_resource type="Shader" uid="uid://blloggkmias6g" path="res://01_Tests_One_Dimension/trunc_falloff.tres" id="17_qb6l1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1mpi1"]
 resource_local_to_scene = true
@@ -102,6 +110,90 @@ shader_parameter/falloff = 30.0
 shader_parameter/degree = 4.0
 shader_parameter/speed = 0.5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o07ss"]
+resource_local_to_scene = true
+shader = ExtResource("10_s2ovd")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 5.5
+shader_parameter/attack_width = 0.445
+shader_parameter/release = 1.217
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rmdqf"]
+resource_local_to_scene = true
+shader = ExtResource("11_ypced")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 1.875
+shader_parameter/start_point = 2.375e-07
+shader_parameter/width = 0.755
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pbbk1"]
+resource_local_to_scene = true
+shader = ExtResource("12_xunrg")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 3.0
+shader_parameter/coef = 4.994
+shader_parameter/power = 0.962
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1mu3"]
+resource_local_to_scene = true
+shader = ExtResource("13_3p2mp")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 3.0
+shader_parameter/power = 0.29
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_72bwv"]
+resource_local_to_scene = true
+shader = ExtResource("14_7rsgh")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 3.0
+shader_parameter/power = 2.701
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d7gy7"]
+resource_local_to_scene = true
+shader = ExtResource("15_y6pem")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 3.0
+shader_parameter/left = 0.296
+shader_parameter/right = 2.601
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0cag"]
+resource_local_to_scene = true
+shader = ExtResource("16_d02yj")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 4.375
+shader_parameter/coef = 3.791
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_84vja"]
+resource_local_to_scene = true
+shader = ExtResource("17_qb6l1")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 3.0
+shader_parameter/stop_point = 1.0
+
 [node name="02_Fx" type="Node2D"]
 
 [node name="sin_cos" parent="." instance=ExtResource("1_euvlb")]
@@ -147,4 +239,44 @@ scale = Vector2(64, 64)
 [node name="polynomial_impulse" parent="." instance=ExtResource("1_euvlb")]
 material = SubResource("ShaderMaterial_e5jht")
 position = Vector2(104, 104)
+scale = Vector2(64, 64)
+
+[node name="sustained_impulse" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_o07ss")
+position = Vector2(176, 104)
+scale = Vector2(64, 64)
+
+[node name="cubic_pulse" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_rmdqf")
+position = Vector2(248, 104)
+scale = Vector2(64, 64)
+
+[node name="exponential_step" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_pbbk1")
+position = Vector2(320, 104)
+scale = Vector2(64, 64)
+
+[node name="gain" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_c1mu3")
+position = Vector2(392, 104)
+scale = Vector2(64, 64)
+
+[node name="parabola" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_72bwv")
+position = Vector2(32, 176)
+scale = Vector2(64, 64)
+
+[node name="power_curve" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_d7gy7")
+position = Vector2(104, 176)
+scale = Vector2(64, 64)
+
+[node name="sinc_curve" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_s0cag")
+position = Vector2(176, 176)
+scale = Vector2(64, 64)
+
+[node name="trunc_falloff" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_84vja")
+position = Vector2(248, 176)
 scale = Vector2(64, 64)
