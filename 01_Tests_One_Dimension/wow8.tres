@@ -1,4 +1,4 @@
-[gd_resource type="Shader" format=3 uid="uid://hgqeqa4pw8gp"]
+[gd_resource type="Shader" format=3 uid="uid://ds6uvo1wtvlf5"]
 
 [resource]
 code = "shader_type canvas_item;
@@ -11,12 +11,11 @@ uniform float line_smoothness : hint_range(0.0, 1.0) = 0.039;
 uniform float taille_graph : hint_range(0.5, 20.0) = 3.0;
 
 float f(vec2 uv){
-	// Problème avec la valeur absolue, il faut essayer d'afficher autrement
-	return abs(sin(uv.x - TIME) - uv.y);
+	return abs(4.0 + 4.0 * smoothstep(0.0, 0.7, sin(uv.x + TIME)) - 3.0 * uv.y);
 }
 
 float f2(vec2 uv){
-	return abs(mod(uv.x, 7) + f(uv) - uv.y);
+	return abs(cos(uv.x - TIME) + f(uv) - uv.y);
 }
 
 void fragment() {
