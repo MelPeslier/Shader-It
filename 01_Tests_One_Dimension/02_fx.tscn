@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://b8cdgjmg1sce4"]
+[gd_scene load_steps=79 format=3 uid="uid://b8cdgjmg1sce4"]
 
 [ext_resource type="PackedScene" uid="uid://do8gxiaq0yyn3" path="res://01_Tests_One_Dimension/fx.tscn" id="1_euvlb"]
 [ext_resource type="Shader" path="res://01_Tests_One_Dimension/fx.gdshader" id="2_qpbkg"]
@@ -33,6 +33,12 @@
 [ext_resource type="Shader" uid="uid://dfcyx1y62ocoq" path="res://01_Tests_One_Dimension/circle from circle inverse.tres" id="30_npoeu"]
 [ext_resource type="Shader" uid="uid://djs6x0gj34nem" path="res://01_Tests_One_Dimension/blackhole deforming subspace.tres" id="31_a78ju"]
 [ext_resource type="Shader" uid="uid://dseb2abnhyiqp" path="res://01_Tests_One_Dimension/new circles and chained.tres" id="32_khql2"]
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/wow14.gdshader" id="33_rhh32"]
+[ext_resource type="Shader" uid="uid://cnr6v2ybtfjbf" path="res://01_Tests_One_Dimension/wow15.tres" id="34_nvx7g"]
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/eye.gdshader" id="35_rouq5"]
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/gresille.gdshader" id="36_65sx2"]
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/XetY.gdshader" id="37_lulhb"]
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/wow19.gdshader" id="38_ektcn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_me01r"]
 resource_local_to_scene = true
@@ -368,57 +374,81 @@ shader_parameter/centre_x = -2.526
 shader_parameter/centre_y = 2.332
 shader_parameter/range = 2.217
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wuuc2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogtcn"]
 resource_local_to_scene = true
-shader = ExtResource("20_umkmo")
+shader = ExtResource("33_rhh32")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_color2 = Color(0.992157, 0.231373, 0.286275, 1)
+shader_parameter/line_width = 0.04
+shader_parameter/line_smoothness = 0.039
+shader_parameter/taille_graph = 3.5
+shader_parameter/rayon = 1.0
+shader_parameter/centre_x = 0.0
+shader_parameter/centre_y = 0.0
+shader_parameter/range = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_siy8h"]
+resource_local_to_scene = true
+shader = ExtResource("34_nvx7g")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_color2 = Color(0.992157, 0.231373, 0.286275, 1)
+shader_parameter/line_width = 0.4
+shader_parameter/line_smoothness = 0.39
+shader_parameter/taille_graph = 13.381
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6u4hi"]
+resource_local_to_scene = true
+shader = ExtResource("35_rouq5")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_color2 = Color(0.992157, 0.231373, 0.286275, 1)
+shader_parameter/line_width = 0.373
+shader_parameter/line_smoothness = 0.355
+shader_parameter/taille_graph = 11.644
+shader_parameter/rayon = 0.643
+shader_parameter/centre_x = 0.414
+shader_parameter/centre_y = -0.178
+shader_parameter/range = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fhy1"]
+resource_local_to_scene = true
+shader = ExtResource("36_65sx2")
 shader_parameter/bg_color = Color(0, 0, 0, 1)
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_color2 = Color(0.992157, 0.231373, 0.286275, 1)
 shader_parameter/line_width = 0.373
 shader_parameter/line_smoothness = 0.361
-shader_parameter/taille_graph = 20.0
+shader_parameter/taille_graph = 40.0
 shader_parameter/rayon = 1.461
 shader_parameter/centre_x = -2.526
 shader_parameter/centre_y = 2.332
 shader_parameter/range = 2.217
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1m8h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qijn2"]
 resource_local_to_scene = true
-shader = ExtResource("20_umkmo")
+shader = ExtResource("37_lulhb")
 shader_parameter/bg_color = Color(0, 0, 0, 1)
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_color2 = Color(0.992157, 0.231373, 0.286275, 1)
 shader_parameter/line_width = 0.373
 shader_parameter/line_smoothness = 0.361
-shader_parameter/taille_graph = 20.0
+shader_parameter/taille_graph = 13.661
 shader_parameter/rayon = 1.461
 shader_parameter/centre_x = -2.526
 shader_parameter/centre_y = 2.332
 shader_parameter/range = 2.217
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xbtsj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mppxo"]
 resource_local_to_scene = true
-shader = ExtResource("20_umkmo")
+shader = ExtResource("38_ektcn")
 shader_parameter/bg_color = Color(0, 0, 0, 1)
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_color2 = Color(0.992157, 0.231373, 0.286275, 1)
 shader_parameter/line_width = 0.373
 shader_parameter/line_smoothness = 0.361
-shader_parameter/taille_graph = 20.0
-shader_parameter/rayon = 1.461
-shader_parameter/centre_x = -2.526
-shader_parameter/centre_y = 2.332
-shader_parameter/range = 2.217
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vxdj5"]
-resource_local_to_scene = true
-shader = ExtResource("20_umkmo")
-shader_parameter/bg_color = Color(0, 0, 0, 1)
-shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/line_color2 = Color(0.992157, 0.231373, 0.286275, 1)
-shader_parameter/line_width = 0.373
-shader_parameter/line_smoothness = 0.361
-shader_parameter/taille_graph = 20.0
+shader_parameter/taille_graph = 40.0
 shader_parameter/rayon = 1.461
 shader_parameter/centre_x = -2.526
 shader_parameter/centre_y = 2.332
@@ -432,7 +462,7 @@ shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_color2 = Color(0.992157, 0.231373, 0.286275, 1)
 shader_parameter/line_width = 0.373
 shader_parameter/line_smoothness = 0.361
-shader_parameter/taille_graph = 20.0
+shader_parameter/taille_graph = 13.667
 shader_parameter/rayon = 1.461
 shader_parameter/centre_x = -2.526
 shader_parameter/centre_y = 2.332
@@ -601,26 +631,56 @@ position = Vector2(32, 392)
 scale = Vector2(64, 64)
 
 [node name="wow14" parent="." instance=ExtResource("1_euvlb")]
-material = SubResource("ShaderMaterial_wuuc2")
+material = SubResource("ShaderMaterial_ogtcn")
 position = Vector2(104, 392)
 scale = Vector2(64, 64)
 
 [node name="wow15" parent="." instance=ExtResource("1_euvlb")]
-material = SubResource("ShaderMaterial_r1m8h")
+material = SubResource("ShaderMaterial_siy8h")
 position = Vector2(176, 392)
 scale = Vector2(64, 64)
 
-[node name="wow16" parent="." instance=ExtResource("1_euvlb")]
-material = SubResource("ShaderMaterial_xbtsj")
+[node name="eye" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_6u4hi")
 position = Vector2(248, 392)
 scale = Vector2(64, 64)
 
-[node name="wow17" parent="." instance=ExtResource("1_euvlb")]
-material = SubResource("ShaderMaterial_vxdj5")
+[node name="gresille" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_7fhy1")
 position = Vector2(320, 392)
 scale = Vector2(64, 64)
 
-[node name="wow18" parent="." instance=ExtResource("1_euvlb")]
-material = SubResource("ShaderMaterial_ko55d")
+[node name="XetY" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_qijn2")
 position = Vector2(392, 392)
+scale = Vector2(64, 64)
+
+[node name="wow19" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_mppxo")
+position = Vector2(32, 464)
+scale = Vector2(64, 64)
+
+[node name="wow20" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_ko55d")
+position = Vector2(104, 464)
+scale = Vector2(64, 64)
+
+[node name="wow21" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_ko55d")
+position = Vector2(176, 464)
+scale = Vector2(64, 64)
+
+[node name="wow22" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_ko55d")
+position = Vector2(248, 464)
+scale = Vector2(64, 64)
+
+[node name="wow23" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_ko55d")
+position = Vector2(320, 464)
+scale = Vector2(64, 64)
+
+[node name="wow24" parent="." instance=ExtResource("1_euvlb")]
+material = SubResource("ShaderMaterial_ko55d")
+position = Vector2(392, 464)
 scale = Vector2(64, 64)

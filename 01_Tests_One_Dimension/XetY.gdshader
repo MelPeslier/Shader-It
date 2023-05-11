@@ -1,7 +1,4 @@
-[gd_resource type="Shader" format=3 uid="uid://hgqeqa4pw8gp"]
-
-[resource]
-code = "shader_type canvas_item;
+shader_type canvas_item;
 
 uniform vec4 bg_color : source_color = vec4(vec3(0.0), 1.0);
 uniform vec4 line_color : source_color = vec4(vec3(1.0), 1.0);
@@ -15,7 +12,7 @@ uniform float centre_y : hint_range(-5.0, 5.0) = 0.0;
 uniform float range : hint_range(0.01, 10.0) = 1.0;
 
 float f(vec2 uv){
-	return sin(-uv.x) * exp(-uv.x / 10.0) 
+	return ceil(uv.x / 2.0) * cos(uv.y * 2.0) 
 	- (1.0 - uv.y);
 }
 
@@ -36,4 +33,4 @@ void fragment() {
 	vec4 tex2 = mix(bg_color, line_color2, mix_value2);
 	
 	COLOR =  tex1 ;
-}"
+}
