@@ -9,17 +9,17 @@ uniform float line_smoothness : hint_range(0.0, 1.0) = 0.039;
 uniform float speed : hint_range(0.1, 2.0) = 0.2;
 
 float f(float x, float y){
-	return -(cos(x * PI) - 1.0) / 2.0 
+	return 1.0 - cos((x * PI) / 2.0) 
 	- (1.0 - y);
 }
 
-float sinInOut(float t){
-	return -(cos(t * PI) - 1.0) / 2.0;
+float sinIn(float t){
+	return 1.0 - cos((t * PI) / 2.0);
 }
 
 float indice(float x, float y){
 	float rayon = 0.01;
-	float centre_x = sinInOut(abs(fract(TIME * speed) * 2.0 - 1.0));
+	float centre_x = sinIn(abs(fract(TIME * speed) * 2.0 - 1.0));
 	float centre_y = f(x, y) + y;
 	return (
 		pow(rayon, 2.0) - pow(x - centre_x, 2.0) 

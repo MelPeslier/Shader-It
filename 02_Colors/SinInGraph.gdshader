@@ -1,0 +1,16 @@
+shader_type canvas_item;
+
+uniform vec4 color1 : source_color = vec4(1.0, 0.51, 0.37, 1.0);
+uniform vec4 color2 : source_color = vec4(0.63, 0.0, 0.055, 1.0);
+uniform float speed : hint_range(0.1, 2.0) = 0.2;
+
+float sinIn(float t){
+	return 1.0 - cos((t * PI) / 2.0);
+}
+
+void fragment() {
+	
+	float mix_value = sinIn(abs(fract(TIME * speed) * 2.0 - 1.0));
+	
+	COLOR = mix(color1, color2, mix_value);
+}

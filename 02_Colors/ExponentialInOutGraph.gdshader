@@ -1,0 +1,22 @@
+shader_type canvas_item;
+
+uniform vec4 color1 : source_color = vec4(1.0, 0.51, 0.37, 1.0);
+uniform vec4 color2 : source_color = vec4(0.63, 0.0, 0.055, 1.0);
+uniform float speed : hint_range(0.1, 2.0) = 0.2;
+
+float exponentialInOut(float t){
+// Using ternary operators. '()' needed.
+	return t < 0.0001 || t > 0.9999 
+		? t 
+		: (t < 0.5
+			? +0.5 * pow(2.0, (20.0 * t) - 10.0)
+			: -0.5 * pow(2.0, 10.0 - (20.0 * t)) + 1.0
+		);
+}
+
+void fragment() {
+	
+	float mix_value = exponentialInOut(abs(fract(TIME * speed) * 2.0 - 1.0));
+	
+	COLOR = mix(color1, color2, mix_value);
+}
