@@ -1,16 +1,13 @@
-[gd_resource type="Shader" format=3 uid="uid://hgqeqa4pw8gp"]
-
-[resource]
-code = "shader_type canvas_item;
+shader_type canvas_item;
 
 uniform vec4 bg_color : source_color = vec4(vec3(0.0), 1.0);
 uniform vec4 line_color : source_color = vec4(vec3(1.0), 1.0);
 uniform vec4 line_color2 : source_color = vec4(vec3(1.0), 1.0);
 uniform float line_width : hint_range(0.0, 1.0) = 0.04;
 uniform float line_smoothness : hint_range(0.0, 1.0) = 0.039;
-uniform float taille_graph : hint_range(0.5, 100.0) = 3.0;
+uniform float taille_graph : hint_range(0.5, 40.0) = 3.0;
 uniform float rayon : hint_range(0.01, 10.0) = 1.0;
-uniform float centre_x : hint_range(-20.0, 30.0) = 0.0;
+uniform float centre_x : hint_range(-20.0, 17.0) = 0.0;
 uniform float centre_y : hint_range(-5.0, 5.0) = 0.0;
 uniform float range : hint_range(0.01, 10.0) = 1.0;
 
@@ -20,8 +17,8 @@ float f(vec2 uv){
 }
 
 float f2(vec2 uv){
-	return (pow(rayon, 2.0) - pow(uv.x + f(uv) - centre_x, 2.0) - 
-		pow(f(uv) * centre_y, 2.0)
+	return (pow(rayon, 2.0) - pow(uv.x - centre_x, 2.0) - 
+		pow(f(uv), 2.0)
 	);
 }
 
@@ -35,4 +32,4 @@ void fragment() {
 	vec4 tex2 = mix(bg_color, line_color2, mix_value2);
 	
 	COLOR =  tex1 + tex2;
-}"
+}
