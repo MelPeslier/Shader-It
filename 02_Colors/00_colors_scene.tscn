@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bknfmdfdalkcy"]
+[gd_scene load_steps=28 format=3 uid="uid://bknfmdfdalkcy"]
 
 [ext_resource type="Shader" uid="uid://bhsrrwphko72g" path="res://02_Colors/exponentialInGraph.tres" id="1_mlo1w"]
 [ext_resource type="Shader" path="res://02_Colors/ExponentialInFunction.gdshader" id="1_vub4b"]
@@ -12,6 +12,7 @@
 [ext_resource type="Shader" uid="uid://bv0s1rd4u381h" path="res://02_Colors/SinOutGraph.tres" id="10_fhahn"]
 [ext_resource type="Shader" path="res://02_Colors/SinInOutFunction.gdshader" id="11_gy7f3"]
 [ext_resource type="Shader" path="res://02_Colors/SinInOutGraph.gdshader" id="12_1d3oo"]
+[ext_resource type="Shader" uid="uid://pqlacpsf24c7" path="res://02_Colors/william_turner_sunset.tres" id="13_s4igv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mldrq"]
 shader = ExtResource("1_vub4b")
@@ -110,6 +111,12 @@ shader = ExtResource("12_1d3oo")
 shader_parameter/color1 = Color(1, 0.51, 0.37, 1)
 shader_parameter/color2 = Color(0.63, 0, 0.055, 1)
 shader_parameter/speed = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yr2qd"]
+shader = ExtResource("13_s4igv")
+shader_parameter/color1 = Color(0, 0.431373, 0.603922, 1)
+shader_parameter/color2 = Color(0.945098, 0, 0.101961, 1)
+shader_parameter/speed = 0.591
 
 [node name="00_colors_scene" type="Node2D"]
 
@@ -250,5 +257,11 @@ texture = SubResource("CanvasTexture_qivdv")
 [node name="SinInOutGraph" type="Sprite2D" parent="Cubic"]
 material = SubResource("ShaderMaterial_d5xtf")
 position = Vector2(32, 178)
+scale = Vector2(64, 64)
+texture = SubResource("CanvasTexture_qivdv")
+
+[node name="WilliamTurnerSunset" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_yr2qd")
+position = Vector2(544, 160)
 scale = Vector2(64, 64)
 texture = SubResource("CanvasTexture_qivdv")

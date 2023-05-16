@@ -1,0 +1,41 @@
+[gd_resource type="Shader" format=3 uid="uid://pqlacpsf24c7"]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform vec3 color1 : source_color = vec3(1.0, 0.51, 0.37);
+uniform vec3 color2 : source_color = vec3(0.63, 0.0, 0.055);
+uniform float speed : hint_range(0.0, 3.0) = 0.0;
+
+float plot(vec2 uv, float pct){
+	return smoothstep(pct - 0.01, pct, uv.y) - 
+		smoothstep( pct, pct + 0.01, uv.y);
+}
+
+void fragment() {
+	vec3 tex = vec3(0.0);
+	vec3 pct = vec3(0.0);
+	
+	// Définit les 'mix value' des trois couleurs à l'aide de fonctions 
+	pct.r = UV.x < 0.5 ? 
+		8.0 * UV.x * UV.x * UV.x * UV.x : 
+		1.0 - pow(-2.0 * UV.x + 2.0, 4.0) / 2.0;
+	pct.g = clamp(sin(UV.x * PI * cos(TIME * speed)) + cos(TIME * speed), 0.0, 1.0);
+	pct.b = sqrt(1.0 - pow(UV.x - 1.0, 2.0));
+	
+	// Dessine le gradient selon les pourcentages définits
+	tex = mix(color1, color2, pct);
+	
+	// Dessine les courbes représentants la mix value des couleurs 'r g b'
+	vec3 red_color = vec3(1.0, 0.0, 0.0);
+	tex = mix(tex, red_color, plot(UV, pct.r));
+	
+	vec3 green_color = vec3(0.0, 1.0, 0.0);
+	tex = mix(tex, green_color, plot(UV, pct.g));
+	
+	vec3 blue_color = vec3(0.0, 0.0, 1.0);
+	tex = mix(tex, blue_color, plot(UV, pct.b));
+	
+	COLOR = vec4(tex, 1.0);
+}
+"

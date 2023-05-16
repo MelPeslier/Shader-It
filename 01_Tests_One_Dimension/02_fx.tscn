@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://b8cdgjmg1sce4"]
+[gd_scene load_steps=87 format=3 uid="uid://b8cdgjmg1sce4"]
 
 [ext_resource type="PackedScene" uid="uid://do8gxiaq0yyn3" path="res://01_Tests_One_Dimension/fx.tscn" id="1_euvlb"]
 [ext_resource type="Shader" path="res://01_Tests_One_Dimension/fx.gdshader" id="2_qpbkg"]
@@ -42,6 +42,7 @@
 [ext_resource type="Shader" path="res://01_Tests_One_Dimension/wow20.gdshader" id="39_cceo6"]
 [ext_resource type="Shader" path="res://01_Tests_One_Dimension/super_style.gdshader" id="40_fhyh0"]
 [ext_resource type="Shader" path="res://01_Tests_One_Dimension/wow22.gdshader" id="41_8aw43"]
+[ext_resource type="Shader" path="res://01_Tests_One_Dimension/wow23.gdshader" id="42_pldmc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_76yop"]
 resource_local_to_scene = true
@@ -499,9 +500,9 @@ shader_parameter/centre_x = -6.586
 shader_parameter/centre_y = -1.706
 shader_parameter/range = 2.217
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nr1lt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ooiwa"]
 resource_local_to_scene = true
-shader = ExtResource("20_umkmo")
+shader = ExtResource("42_pldmc")
 shader_parameter/bg_color = Color(0, 0, 0, 1)
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_color2 = Color(0.992157, 0.231373, 0.286275, 1)
@@ -735,7 +736,7 @@ position = Vector2(248, 464)
 scale = Vector2(64, 64)
 
 [node name="wow23" parent="." instance=ExtResource("1_euvlb")]
-material = SubResource("ShaderMaterial_nr1lt")
+material = SubResource("ShaderMaterial_ooiwa")
 position = Vector2(320, 464)
 scale = Vector2(64, 64)
 
