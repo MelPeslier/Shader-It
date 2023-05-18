@@ -114,8 +114,8 @@ shader_parameter/speed = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yr2qd"]
 shader = ExtResource("13_s4igv")
-shader_parameter/color1 = Color(0, 0.431373, 0.603922, 1)
-shader_parameter/color2 = Color(0.945098, 0, 0.101961, 1)
+shader_parameter/color1 = Color(0.996078, 0.996078, 0.996078, 1)
+shader_parameter/color2 = Color(1, 0.403922, 0, 1)
 shader_parameter/speed = 0.591
 
 [node name="00_colors_scene" type="Node2D"]
