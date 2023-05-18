@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://ciem2pn42hc8y"]
+[gd_scene load_steps=14 format=3 uid="uid://ciem2pn42hc8y"]
 
 [ext_resource type="Shader" path="res://03_Shapes/01_shape.gdshader" id="1_68yhe"]
 [ext_resource type="Shader" path="res://03_Shapes/blur.gdshader" id="2_k2g2s"]
 [ext_resource type="Shader" path="res://03_Shapes/03_Shapes.gdshader" id="3_vo2lg"]
 [ext_resource type="Shader" uid="uid://cflbih1tme066" path="res://03_Shapes/draw_rectangle.tres" id="4_ecgl3"]
 [ext_resource type="Shader" uid="uid://dobmanc4pwysy" path="res://03_Shapes/draw_multiple_rectangle.tres" id="5_ky4ih"]
+[ext_resource type="Shader" uid="uid://bcgvo4g3rs25b" path="res://03_Shapes/manual_squarre_painting.tres" id="6_77uqx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jkto3"]
 shader = ExtResource("1_68yhe")
@@ -48,6 +49,17 @@ shader_parameter/taille_ligne = 0.01
 shader_parameter/point_ = Vector2(0.986, 0.981)
 shader_parameter/nb_rectangle = 20.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4inik"]
+shader = ExtResource("6_77uqx")
+shader_parameter/line_color = null
+shader_parameter/rectangle_color_ = Color(0.439216, 0.301961, 0.227451, 1)
+shader_parameter/height_ = 0.63
+shader_parameter/width_ = 0.16
+shader_parameter/taille_ligne = 0.01
+shader_parameter/point_ = Vector2(0, 0)
+shader_parameter/nb_rectangle_au_carre = 20.0
+shader_parameter/speed = 0.0
+
 [node name="03_Shapes" type="Node2D"]
 
 [node name="01_shape" type="Sprite2D" parent="."]
@@ -77,5 +89,11 @@ texture = SubResource("CanvasTexture_xsvhu")
 [node name="draw_multiple_rectangle" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_qlb7v")
 position = Vector2(96, 96)
+scale = Vector2(48, 48)
+texture = SubResource("CanvasTexture_xsvhu")
+
+[node name="manual_squarre_painting" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_4inik")
+position = Vector2(160, 96)
 scale = Vector2(48, 48)
 texture = SubResource("CanvasTexture_xsvhu")
