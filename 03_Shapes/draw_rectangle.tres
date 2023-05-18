@@ -1,0 +1,59 @@
+[gd_resource type="Shader" format=3 uid="uid://cflbih1tme066"]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform vec3 line_color : source_color;
+uniform vec3 rectangle_color : source_color = vec3(0.4745098054409, 0.02352941222489, 0.2392156869173);
+uniform float height : hint_range(0.01, 1.0, 0.01) = 0.1;
+uniform float width : hint_range(0.01, 1.0, 0.01) = 0.1;
+uniform float taille_ligne : hint_range(0.01, 0.03) = 0.1;
+uniform vec2 point = vec2(0.0, 0.0);
+
+// Tracer la figure avec un effet de trouble
+float plot(float y, float figure){
+	return step(figure, y) 
+		- step(figure + taille_ligne, y);
+}
+
+// Determiner la figure à tracer
+float rectangle(vec2 ecran, float point_x, float point_y, float taille){
+	float hors_cadre = -1.0;
+	return ecran.x < point_x ? hors_cadre :
+		(ecran.x > point_x + taille ? hors_cadre : point_y);
+}
+
+float plot_interieur(float y, float figure){
+	return step(figure + taille_ligne, y) 
+		- step(figure + height - taille_ligne, y);
+}
+
+float interieur_rectangle(vec2 ecran, float point_x, float point_y){
+	float hors_cadre = -1.0;
+	return ecran.x < point_x + taille_ligne ? hors_cadre : 
+		(ecran.x > point_x + width - taille_ligne ? hors_cadre : point_y);
+}
+
+void fragment() {
+	vec3 tex = texture(TEXTURE, UV).rgb;
+	
+// Pour inverser le tracer on doit enlever la taille de la ligne
+	float pct = plot(UV.y, rectangle(UV, point.x, point.y, width));
+	tex = mix(tex, line_color, pct);
+	pct = plot_interieur(UV.y, interieur_rectangle(UV, point.x, point.y));
+	tex = mix(tex, rectangle_color, pct);
+	
+	pct = plot(UV.y, rectangle(UV, point.x, point.y + height, width) - taille_ligne);
+	tex = mix(tex, line_color, pct);
+	
+// Pour dessiner dans l'autre sens on inverse tout
+	pct = plot(UV.x, rectangle(UV.yx, point.y, point.x, height));
+	tex = mix(tex, line_color, pct);
+	
+	pct = plot(UV.x, rectangle(UV.yx, point.y, point.x + width, height) - taille_ligne);
+	tex = mix(tex, line_color, pct);
+	
+	COLOR.rgb = tex;
+	COLOR.a = 1.0;
+}
+"

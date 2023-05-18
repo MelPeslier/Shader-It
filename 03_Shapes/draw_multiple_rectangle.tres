@@ -1,0 +1,81 @@
+[gd_resource type="Shader" format=3 uid="uid://dobmanc4pwysy"]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform vec3 line_color : source_color;
+uniform vec3 rectangle_color_ : source_color = vec3(0.4745098054409, 0.02352941222489, 0.2392156869173);
+uniform float height_ : hint_range(0.01, 1.0, 0.01) = 0.1;
+uniform float width_ : hint_range(0.01, 1.0, 0.01) = 0.1;
+uniform float taille_ligne : hint_range(0.01, 0.03) = 0.01;
+uniform vec2 point_ = vec2(0.0, 0.0);
+uniform float nb_rectangle : hint_range(0.0, 20.0, 1.0) = 1.0;
+
+float random (vec2 uv) {
+	return fract(sin(dot(uv.xy,
+		vec2(12.9898,78.233))) * 43758.5453123);
+}
+
+// Tracer la figure avec un effet de trouble
+float plot(float y, float figure){
+	return step(figure, y) 
+		- step(figure + taille_ligne, y);
+}
+
+// Determiner la figure à tracer
+float rectangle(vec2 ecran, float point_x, float point_y, float taille){
+	float hors_cadre = -1.0;
+	return ecran.x < point_x ? hors_cadre :
+		(ecran.x > point_x + taille ? hors_cadre : point_y);
+}
+
+float plot_interieur(float y, float figure, float h){
+	return step(figure + taille_ligne, y) 
+		- step(figure + h - taille_ligne, y);
+}
+
+float interieur_rectangle(vec2 ecran, float point_x, float point_y, float w){
+	float hors_cadre = -1.0;
+	return ecran.x < point_x + taille_ligne ? hors_cadre : 
+		(ecran.x > point_x + w - taille_ligne ? hors_cadre : point_y);
+}
+
+void fragment() {
+	vec3 tex = texture(TEXTURE, UV).rgb;
+	
+	for (float i = 1.0; i < nb_rectangle + 1.0; i++){
+// Randomise
+		vec3 rectangle_color = vec3(
+			random(vec2(cos(rectangle_color_.r * PI * i + i / 2.0))), 
+			random(vec2(cos(rectangle_color_.g * PI/2.0 * i + i))), 
+			random(vec2(cos(rectangle_color_.b * PI * 7.0 * i + i)))
+		);
+		
+		float height = mod(random(vec2(cos(height_ * i / PI))), height_);
+		float width = mod(random(vec2(cos(width_ * PI / i))), width_);
+		
+		vec2 point = vec2(
+			mod(random(vec2(cos(point_ + i + PI))), 0.9),
+			mod(random(vec2((i + i * 3.15621 * PI) * cos(point_ * PI))), 0.9)
+		);
+//Draw
+// Pour inverser le tracer on doit enlever la taille de la ligne
+		float pct = plot(UV.y, rectangle(UV, point.x, point.y, width));
+		tex = mix(tex, line_color, pct);
+		pct = plot_interieur(UV.y, interieur_rectangle(UV, point.x, point.y, width), height);
+		tex = mix(tex, rectangle_color, pct);
+		
+		pct = plot(UV.y, rectangle(UV, point.x, point.y + height, width) - taille_ligne);
+		tex = mix(tex, line_color, pct);
+		
+// Pour dessiner dans l'autre sens on inverse tout
+		pct = plot(UV.x, rectangle(UV.yx, point.y, point.x, height));
+		tex = mix(tex, line_color, pct);
+		
+		pct = plot(UV.x, rectangle(UV.yx, point.y, point.x + width, height) - taille_ligne);
+		tex = mix(tex, line_color, pct);
+	}
+	COLOR.rgb = tex;
+	COLOR.a = 1.0;
+}
+"

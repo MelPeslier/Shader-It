@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://ciem2pn42hc8y"]
+
+[ext_resource type="Shader" path="res://03_Shapes/01_shape.gdshader" id="1_68yhe"]
+[ext_resource type="Shader" path="res://03_Shapes/blur.gdshader" id="2_k2g2s"]
+[ext_resource type="Shader" path="res://03_Shapes/03_Shapes.gdshader" id="3_vo2lg"]
+[ext_resource type="Shader" uid="uid://cflbih1tme066" path="res://03_Shapes/draw_rectangle.tres" id="4_ecgl3"]
+[ext_resource type="Shader" uid="uid://dobmanc4pwysy" path="res://03_Shapes/draw_multiple_rectangle.tres" id="5_ky4ih"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jkto3"]
+shader = ExtResource("1_68yhe")
+shader_parameter/bgcolor = null
+shader_parameter/height = 0.13
+shader_parameter/width = 0.4
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xsvhu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mrfb"]
+shader = ExtResource("2_k2g2s")
+shader_parameter/bgcolor = null
+shader_parameter/height = 0.01
+shader_parameter/blur_height = 0.22
+shader_parameter/width = 0.01
+shader_parameter/blur_width = 0.46
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7p5g"]
+shader = ExtResource("3_vo2lg")
+shader_parameter/bgcolor = null
+shader_parameter/height = 0.28
+shader_parameter/width = 0.06
+shader_parameter/blur = 0.38
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggeh5"]
+shader = ExtResource("4_ecgl3")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/rectangle_color = Color(0.47451, 0.0235294, 0.239216, 1)
+shader_parameter/height = 0.77
+shader_parameter/width = 0.78
+shader_parameter/taille_ligne = 0.01
+shader_parameter/point = Vector2(0.05, 0.05)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlb7v"]
+shader = ExtResource("5_ky4ih")
+shader_parameter/line_color = null
+shader_parameter/rectangle_color_ = Color(0.556863, 0.443137, 0.384314, 1)
+shader_parameter/height_ = 0.54
+shader_parameter/width_ = 0.77
+shader_parameter/taille_ligne = 0.01
+shader_parameter/point_ = Vector2(0.986, 0.981)
+shader_parameter/nb_rectangle = 20.0
+
+[node name="03_Shapes" type="Node2D"]
+
+[node name="01_shape" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jkto3")
+position = Vector2(32, 32)
+scale = Vector2(48, 48)
+texture = SubResource("CanvasTexture_xsvhu")
+
+[node name="shape2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_3mrfb")
+position = Vector2(96, 32)
+scale = Vector2(48, 48)
+texture = SubResource("CanvasTexture_xsvhu")
+
+[node name="shape3" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_s7p5g")
+position = Vector2(160, 32)
+scale = Vector2(48, 48)
+texture = SubResource("CanvasTexture_xsvhu")
+
+[node name="draw_rectangle" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ggeh5")
+position = Vector2(32, 96)
+scale = Vector2(48, 48)
+texture = SubResource("CanvasTexture_xsvhu")
+
+[node name="draw_multiple_rectangle" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_qlb7v")
+position = Vector2(96, 96)
+scale = Vector2(48, 48)
+texture = SubResource("CanvasTexture_xsvhu")
