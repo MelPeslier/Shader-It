@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpkuqo115xng0"]
+
+[ext_resource type="Script" path="res://0_NO_SHADERS/00_test/No Shader Motion.gd" id="1_g2sgh"]
+[ext_resource type="Script" path="res://0_NO_SHADERS/00_test/Anchor.gd" id="2_h620b"]
+[ext_resource type="Texture2D" uid="uid://cbhiatdd57slc" path="res://00_Tests/circle.png" id="3_ej6kd"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qhpyt"]
+blend_mode = 1
+
+[sub_resource type="Environment" id="Environment_ign1v"]
+background_mode = 3
+glow_enabled = true
+glow_levels/5 = 1.36
+glow_levels/6 = 1.35
+glow_intensity = 5.39
+glow_strength = 0.52
+glow_bloom = 0.39
+glow_blend_mode = 0
+
+[node name="No Shader Motion" type="Node2D"]
+script = ExtResource("1_g2sgh")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.14902, 0, 0.0784314, 1)
+
+[node name="Anchor" type="Node2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(576, 128)
+script = ExtResource("2_h620b")
+angle = 65.0
+delay = 0.07
+
+[node name="Ball Red" type="Sprite2D" parent="SubViewportContainer/SubViewport/Anchor"]
+modulate = Color(1, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_qhpyt")
+position = Vector2(0, 256)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_ej6kd")
+
+[node name="Anchor2" type="Node2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(576, 128)
+script = ExtResource("2_h620b")
+angle = 65.0
+delay = 0.14
+
+[node name="Ball Green" type="Sprite2D" parent="SubViewportContainer/SubViewport/Anchor2"]
+modulate = Color(0, 1, 0, 1)
+material = SubResource("CanvasItemMaterial_qhpyt")
+position = Vector2(0, 256)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_ej6kd")
+
+[node name="Anchor3" type="Node2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(576, 128)
+script = ExtResource("2_h620b")
+angle = 65.0
+delay = 0.21
+
+[node name="Ball Blue" type="Sprite2D" parent="SubViewportContainer/SubViewport/Anchor3"]
+modulate = Color(0, 0, 1, 1)
+material = SubResource("CanvasItemMaterial_qhpyt")
+position = Vector2(0, 256)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_ej6kd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ign1v")

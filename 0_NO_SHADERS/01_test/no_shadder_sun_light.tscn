@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvard4yk0mvum"]
+
+[ext_resource type="Texture2D" uid="uid://cbhiatdd57slc" path="res://00_Tests/circle.png" id="1_maveb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7bckf"]
+blend_mode = 1
+
+[sub_resource type="Environment" id="Environment_ifl7q"]
+background_mode = 3
+glow_enabled = true
+glow_levels/3 = 0.0
+glow_levels/5 = 3.79
+glow_levels/6 = 0.2
+glow_levels/7 = 0.01
+glow_intensity = 1.49
+glow_strength = 1.22
+glow_bloom = 0.02
+glow_blend_mode = 0
+
+[node name="No shadder SunLight" type="Node2D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.101961, 0, 0.0156863, 1)
+
+[node name="Sun" type="Node2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(584, 336)
+
+[node name="SunSprite" type="Sprite2D" parent="SubViewportContainer/SubViewport/Sun"]
+modulate = Color(1, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_7bckf")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_maveb")
+
+[node name="SunSprite2" type="Sprite2D" parent="SubViewportContainer/SubViewport/Sun"]
+modulate = Color(1, 0.803922, 0.0235294, 1)
+material = SubResource("CanvasItemMaterial_7bckf")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_maveb")
+
+[node name="SunSprite3" type="Sprite2D" parent="SubViewportContainer/SubViewport/Sun"]
+modulate = Color(1, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_7bckf")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_maveb")
+
+[node name="SunSprite4" type="Sprite2D" parent="SubViewportContainer/SubViewport/Sun"]
+modulate = Color(0.662745, 0.509804, 0, 1)
+material = SubResource("CanvasItemMaterial_7bckf")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_maveb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ifl7q")
