@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c16veknunkmt0"]
+
+[ext_resource type="Shader" path="res://shaders/2D/distortion.gdshader" id="1_lmrvk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_01o4e"]
+
+[resource]
+shader = ExtResource("1_lmrvk")
+shader_parameter/x_scale = 1.49012e-07
+shader_parameter/y_scale = 1.49012e-07
+shader_parameter/x_speed = 1.0
+shader_parameter/tex_color = Color(0, 0.694118, 0, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_01o4e")

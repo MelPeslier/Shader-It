@@ -1,0 +1,303 @@
+[gd_scene load_steps=33 format=3 uid="uid://bq014tn8tbpap"]
+
+[ext_resource type="Material" uid="uid://c5rip6ynqxyl0" path="res://shaders/3D/waves.tres" id="1_015bd"]
+[ext_resource type="Material" uid="uid://b76ksmiln56bn" path="res://shaders/3D/wall.tres" id="2_studv"]
+[ext_resource type="Material" uid="uid://cagg7rs4q2scx" path="res://shaders/3D/vertex_offset.tres" id="3_5uswt"]
+[ext_resource type="Material" uid="uid://dwqfv5csbtdtg" path="res://shaders/3D/behind_waves.tres" id="3_s03g4"]
+[ext_resource type="Material" uid="uid://bopyi1lrxb3o2" path="res://shaders/3D/textures.tres" id="5_idnq7"]
+[ext_resource type="Texture2D" uid="uid://dp5fm361cdbro" path="res://shaders/materials/diamondplate_tex.png" id="6_cukbk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ohxxk"]
+sky_top_color = Color(0.152941, 0.152941, 0.152941, 1)
+sky_horizon_color = Color(0.57451, 0.57451, 0.57451, 1)
+ground_bottom_color = Color(0.145098, 0.145098, 0.145098, 1)
+ground_horizon_color = Color(0.57451, 0.57451, 0.57451, 1)
+
+[sub_resource type="Sky" id="Sky_p6b5m"]
+sky_material = SubResource("ProceduralSkyMaterial_ohxxk")
+
+[sub_resource type="Environment" id="Environment_tuepa"]
+background_mode = 2
+sky = SubResource("Sky_p6b5m")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_5jgxs"]
+lightmap_size_hint = Vector2i(17, 9)
+material = ExtResource("1_015bd")
+
+[sub_resource type="SphereMesh" id="SphereMesh_hkw75"]
+material = ExtResource("2_studv")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_14r28"]
+material = ExtResource("1_015bd")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jde13"]
+material = ExtResource("1_015bd")
+
+[sub_resource type="PrismMesh" id="PrismMesh_kmr4i"]
+material = ExtResource("1_015bd")
+
+[sub_resource type="BoxMesh" id="BoxMesh_gaiqs"]
+material = ExtResource("2_studv")
+size = Vector3(5.535, 4.545, 0.28)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ag0pr"]
+lightmap_size_hint = Vector2i(17, 9)
+material = ExtResource("3_s03g4")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qcoq5"]
+material = ExtResource("3_s03g4")
+
+[sub_resource type="QuadMesh" id="QuadMesh_aojho"]
+material = ExtResource("3_s03g4")
+
+[sub_resource type="PrismMesh" id="PrismMesh_ljtth"]
+material = ExtResource("3_s03g4")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4qtwx"]
+material = ExtResource("3_s03g4")
+
+[sub_resource type="SphereMesh" id="SphereMesh_mbmw8"]
+lightmap_size_hint = Vector2i(17, 9)
+material = ExtResource("3_5uswt")
+radial_segments = 128
+rings = 128
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8jg2j"]
+material = ExtResource("3_5uswt")
+radial_segments = 128
+rings = 128
+
+[sub_resource type="QuadMesh" id="QuadMesh_jnfnb"]
+material = ExtResource("3_5uswt")
+subdivide_width = 128
+subdivide_depth = 128
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_57m7b"]
+material = ExtResource("3_5uswt")
+subdivide_width = 128
+subdivide_depth = 128
+
+[sub_resource type="PrismMesh" id="PrismMesh_q3dac"]
+material = ExtResource("3_5uswt")
+subdivide_width = 128
+subdivide_height = 128
+subdivide_depth = 128
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_oyr0l"]
+material = ExtResource("3_5uswt")
+radial_segments = 128
+rings = 128
+
+[sub_resource type="BoxMesh" id="BoxMesh_tqk1a"]
+material = ExtResource("3_5uswt")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nwc0k"]
+lightmap_size_hint = Vector2i(27, 12)
+material = ExtResource("5_idnq7")
+subdivide_width = 128
+subdivide_depth = 128
+
+[sub_resource type="Shader" id="Shader_ucmm4"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mhhdh"]
+render_priority = 0
+shader = SubResource("Shader_ucmm4")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1.515, 1.175, 0.89)
+shader_parameter/uv1_offset = Vector3(0.095, -0.12, 0.175)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("6_cukbk")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4avy8"]
+lightmap_size_hint = Vector2i(27, 12)
+material = SubResource("ShaderMaterial_mhhdh")
+size = Vector2(5, 2)
+subdivide_width = 128
+subdivide_depth = 16
+
+[sub_resource type="BoxMesh" id="BoxMesh_hy1u0"]
+material = ExtResource("5_idnq7")
+
+[node name="Shader3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tuepa")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 2.60915, 4.46694)
+
+[node name="Waves" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.94838, 0, 0)
+
+[node name="Sphere" type="MeshInstance3D" parent="Waves"]
+transform = Transform3D(0.916977, 0.166166, 0.362688, 0, 0.909127, -0.416519, -0.398941, 0.381938, 0.833648, 1.23538, 1.37559, -1.18126)
+mesh = SubResource("SphereMesh_5jgxs")
+skeleton = NodePath("../..")
+
+[node name="SphereCollider" type="MeshInstance3D" parent="Waves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.426751, 1.56052, 1.56929)
+mesh = SubResource("SphereMesh_hkw75")
+skeleton = NodePath("../..")
+
+[node name="AroundCylinder" type="MeshInstance3D" parent="Waves/SphereCollider"]
+transform = Transform3D(1.03282, 0, 0, 0, 0.300578, 0, 0, 0, 1.03282, 0, 0, 0)
+mesh = SubResource("CylinderMesh_14r28")
+skeleton = NodePath("../../..")
+
+[node name="Quad" type="MeshInstance3D" parent="Waves"]
+transform = Transform3D(0.987414, 0, 0, 0, 0.849241, 0.503762, 0, -0.503762, 0.849241, -1.60946, 1.67414, 0.818738)
+mesh = SubResource("QuadMesh_jde13")
+skeleton = NodePath("../..")
+
+[node name="Prism" type="MeshInstance3D" parent="Waves"]
+transform = Transform3D(0.885346, -0.0223171, -0.464398, -0.172082, 0.912185, -0.371898, 0.431916, 0.409172, 0.803758, 2.36558, 0.689534, -0.0401932)
+mesh = SubResource("PrismMesh_kmr4i")
+skeleton = NodePath("../..")
+
+[node name="Cylinder" type="MeshInstance3D" parent="Waves"]
+transform = Transform3D(0.689627, 0.302165, -0.658112, -0.401324, 0.915936, 0, 0.602788, 0.264116, 0.752921, -0.807967, 1.99582, -1.06404)
+mesh = SubResource("CylinderMesh_14r28")
+skeleton = NodePath("../..")
+
+[node name="BehindWaves" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0564, 0, 0)
+
+[node name="Wall" type="MeshInstance3D" parent="BehindWaves"]
+transform = Transform3D(0.70834, 0, -0.705872, 0, 1, 0, 0.705872, 0, 0.70834, -3.73614, 1.51274, 0.93181)
+mesh = SubResource("BoxMesh_gaiqs")
+
+[node name="Sphere" type="MeshInstance3D" parent="BehindWaves"]
+transform = Transform3D(0.916977, 0.166166, 0.362688, 0, 0.909127, -0.416519, -0.398941, 0.381938, 0.833648, 1.23538, 1.37559, -1.18126)
+mesh = SubResource("SphereMesh_ag0pr")
+skeleton = NodePath("../..")
+
+[node name="SphereCollider" type="MeshInstance3D" parent="BehindWaves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.426751, 1.56052, 1.56929)
+mesh = SubResource("SphereMesh_hkw75")
+skeleton = NodePath("../..")
+
+[node name="AroundCylinder" type="MeshInstance3D" parent="BehindWaves/SphereCollider"]
+transform = Transform3D(1.03282, 0, 0, 0, 0.300578, 0, 0, 0, 1.03282, 0, 0, 0)
+mesh = SubResource("CylinderMesh_qcoq5")
+skeleton = NodePath("../../..")
+
+[node name="Quad" type="MeshInstance3D" parent="BehindWaves"]
+transform = Transform3D(0.987414, 0, 0, 0, 0.849241, 0.503762, 0, -0.503762, 0.849241, -1.60946, 1.67414, 0.818738)
+mesh = SubResource("QuadMesh_aojho")
+skeleton = NodePath("../..")
+
+[node name="Prism" type="MeshInstance3D" parent="BehindWaves"]
+transform = Transform3D(0.885346, -0.0223171, -0.464398, -0.172082, 0.912185, -0.371898, 0.431916, 0.409172, 0.803758, 2.36558, 0.689534, -0.0401932)
+mesh = SubResource("PrismMesh_ljtth")
+skeleton = NodePath("../..")
+
+[node name="Cylinder" type="MeshInstance3D" parent="BehindWaves"]
+transform = Transform3D(0.689627, 0.302165, -0.658112, -0.401324, 0.915936, 0, 0.602788, 0.264116, 0.752921, -0.807967, 1.99582, -1.06404)
+mesh = SubResource("CylinderMesh_4qtwx")
+skeleton = NodePath("../..")
+
+[node name="VertexOffset" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4074, 0, -0.456896)
+
+[node name="Sphere" type="MeshInstance3D" parent="VertexOffset"]
+transform = Transform3D(0.916977, 0.166166, 0.362688, 0, 0.909127, -0.416519, -0.398941, 0.381938, 0.833648, 1.59916, 3.33374, -0.87645)
+mesh = SubResource("SphereMesh_mbmw8")
+skeleton = NodePath("../..")
+
+[node name="SphereCollider" type="MeshInstance3D" parent="VertexOffset"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.709208, 0.0920867, 1.31858)
+mesh = SubResource("SphereMesh_hkw75")
+skeleton = NodePath("../..")
+
+[node name="AroundCylinder" type="MeshInstance3D" parent="VertexOffset/SphereCollider"]
+transform = Transform3D(1.03282, 0, 0, 0, 0.300578, 0, 0, 0, 1.03282, 0, 0, 0)
+mesh = SubResource("CylinderMesh_8jg2j")
+skeleton = NodePath("../../..")
+
+[node name="Quad" type="MeshInstance3D" parent="VertexOffset"]
+transform = Transform3D(0.987414, 0, 0, 0, 0.849241, 0.503762, 0, -0.503762, 0.849241, -2.69828, 1.67414, 0.204222)
+mesh = SubResource("QuadMesh_jnfnb")
+skeleton = NodePath("../..")
+
+[node name="Plane" type="MeshInstance3D" parent="VertexOffset"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.68472, -0.27988, 1.71347)
+mesh = SubResource("PlaneMesh_57m7b")
+skeleton = NodePath("../..")
+
+[node name="Prism" type="MeshInstance3D" parent="VertexOffset"]
+transform = Transform3D(0.885346, -0.0223171, -0.464398, -0.172082, 0.912185, -0.371898, 0.431916, 0.409172, 0.803758, 2.05536, 1.2321, 0.367913)
+mesh = SubResource("PrismMesh_q3dac")
+skeleton = NodePath("../..")
+
+[node name="Cylinder" type="MeshInstance3D" parent="VertexOffset"]
+transform = Transform3D(0.689627, 0.302165, -0.658112, -0.401324, 0.915936, 0, 0.602788, 0.264116, 0.752921, -1.60348, 1.99582, -3.5186)
+mesh = SubResource("CylinderMesh_oyr0l")
+skeleton = NodePath("../..")
+
+[node name="Box" type="MeshInstance3D" parent="VertexOffset"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.89165, 1.29549, 0)
+mesh = SubResource("BoxMesh_tqk1a")
+
+[node name="TexturesPlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0601591, 2, 1.06676)
+mesh = SubResource("PlaneMesh_nwc0k")
+
+[node name="TexturesPlane2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.732614, -0.680644, 0, 0.680644, 0.732614, -4.15869, 0.751467, 0.229849)
+mesh = SubResource("PlaneMesh_4avy8")
+
+[node name="TexturesPlane3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0554101, 0.580918, 0.5)
+mesh = SubResource("BoxMesh_hy1u0")

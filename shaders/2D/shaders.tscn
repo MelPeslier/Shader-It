@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5glac4ne7mn3"]
+
+[ext_resource type="Texture2D" uid="uid://c3ph2hshn6b30" path="res://icon.svg" id="1_f7m7f"]
+[ext_resource type="Material" uid="uid://c16veknunkmt0" path="res://shaders/2D/materials/distortion.tres" id="1_ru5b0"]
+[ext_resource type="Shader" path="res://shaders/2D/screen_glass.gdshader" id="3_7xgee"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iegbj"]
+shader = ExtResource("3_7xgee")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ndr2r"]
+
+[node name="Shaders" type="Node2D"]
+
+[node name="0_test" type="Sprite2D" parent="."]
+material = ExtResource("1_ru5b0")
+texture = ExtResource("1_f7m7f")
+
+[node name="1" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_iegbj")
+position = Vector2(160, 104)
+scale = Vector2(2.125, 1.25)
+texture = ExtResource("1_f7m7f")
+
+[node name="2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ndr2r")
+position = Vector2(216, 128)
+texture = ExtResource("1_f7m7f")

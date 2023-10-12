@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dwqfv5csbtdtg"]
+
+[ext_resource type="Shader" path="res://shaders/3D/behind_waves.gdshader" id="1_ibnh3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ibnh3")
+shader_parameter/time_speed = 0.108
+shader_parameter/albedo_start = Color(1, 0, 0, 1)
+shader_parameter/albedo_end = Color(0, 0, 1, 1)

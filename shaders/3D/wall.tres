@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b76ksmiln56bn"]
+
+[ext_resource type="Shader" path="res://shaders/3D/wall.gdshader" id="1_c2snk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_c2snk")
+shader_parameter/albedo = Color(0.113725, 0.00392157, 0.137255, 1)

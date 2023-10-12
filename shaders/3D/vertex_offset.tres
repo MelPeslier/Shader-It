@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cagg7rs4q2scx"]
+
+[ext_resource type="Shader" path="res://shaders/3D/vertex_offset.gdshader" id="1_b52fj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_b52fj")
+shader_parameter/time_speed = 0.1
+shader_parameter/wave_amplitude = 0.1
+shader_parameter/erase_corners = false
