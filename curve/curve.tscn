@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c3ph2hshn6b30" path="res://icon.svg" id="1_nncb1"]
 
 [sub_resource type="Curve" id="Curve_lhngj"]
-_data = [Vector2(0, 0.627273), 0.0, 0.0, 0, 0, Vector2(0.138408, 0.354545), 0.0, 0.0, 0, 0, Vector2(0.228374, 0.718182), 0.0, 0.0, 0, 0, Vector2(0.411765, 0.5), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.252595, 0.547368), 0.0, 0.0, 0, 0, Vector2(0.519031, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_uqfud"]
@@ -21,6 +21,6 @@ texture = ExtResource("1_nncb1")
 
 [node name="WhereTo" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_cmetn")
-position = Vector2(2.54034, -4.03986)
-scale = Vector2(0.346183, 0.26728)
+position = Vector2(-10.4072, 2.33887)
+scale = Vector2(0.798526, 1.09226)
 texture = ExtResource("1_nncb1")
