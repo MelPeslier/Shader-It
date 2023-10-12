@@ -1,11 +1,11 @@
 [gd_scene load_steps=33 format=3 uid="uid://bq014tn8tbpap"]
 
-[ext_resource type="Material" uid="uid://c5rip6ynqxyl0" path="res://shaders/3D/waves.tres" id="1_015bd"]
-[ext_resource type="Material" uid="uid://b76ksmiln56bn" path="res://shaders/3D/wall.tres" id="2_studv"]
-[ext_resource type="Material" uid="uid://cagg7rs4q2scx" path="res://shaders/3D/vertex_offset.tres" id="3_5uswt"]
-[ext_resource type="Material" uid="uid://dwqfv5csbtdtg" path="res://shaders/3D/behind_waves.tres" id="3_s03g4"]
-[ext_resource type="Material" uid="uid://bopyi1lrxb3o2" path="res://shaders/3D/textures.tres" id="5_idnq7"]
-[ext_resource type="Texture2D" uid="uid://dp5fm361cdbro" path="res://shaders/materials/diamondplate_tex.png" id="6_cukbk"]
+[ext_resource type="Material" uid="uid://c5rip6ynqxyl0" path="res://shaders/spatial/waves.tres" id="1_l86pb"]
+[ext_resource type="Material" uid="uid://b76ksmiln56bn" path="res://shaders/spatial/wall.tres" id="2_xnx5u"]
+[ext_resource type="Material" uid="uid://dwqfv5csbtdtg" path="res://shaders/spatial/behind_waves.tres" id="3_sbec6"]
+[ext_resource type="Material" uid="uid://cagg7rs4q2scx" path="res://shaders/spatial/vertex_offset.tres" id="4_o3xqs"]
+[ext_resource type="Material" uid="uid://bopyi1lrxb3o2" path="res://shaders/spatial/textures.tres" id="5_05o0p"]
+[ext_resource type="Texture2D" uid="uid://dp5fm361cdbro" path="res://shaders/materials/diamondplate_tex.png" id="6_0tgq5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ohxxk"]
 sky_top_color = Color(0.152941, 0.152941, 0.152941, 1)
@@ -24,78 +24,78 @@ glow_enabled = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_5jgxs"]
 lightmap_size_hint = Vector2i(17, 9)
-material = ExtResource("1_015bd")
+material = ExtResource("1_l86pb")
 
 [sub_resource type="SphereMesh" id="SphereMesh_hkw75"]
-material = ExtResource("2_studv")
+material = ExtResource("2_xnx5u")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_14r28"]
-material = ExtResource("1_015bd")
+material = ExtResource("1_l86pb")
 
 [sub_resource type="QuadMesh" id="QuadMesh_jde13"]
-material = ExtResource("1_015bd")
+material = ExtResource("1_l86pb")
 
 [sub_resource type="PrismMesh" id="PrismMesh_kmr4i"]
-material = ExtResource("1_015bd")
+material = ExtResource("1_l86pb")
 
 [sub_resource type="BoxMesh" id="BoxMesh_gaiqs"]
-material = ExtResource("2_studv")
+material = ExtResource("2_xnx5u")
 size = Vector3(5.535, 4.545, 0.28)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ag0pr"]
 lightmap_size_hint = Vector2i(17, 9)
-material = ExtResource("3_s03g4")
+material = ExtResource("3_sbec6")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qcoq5"]
-material = ExtResource("3_s03g4")
+material = ExtResource("3_sbec6")
 
 [sub_resource type="QuadMesh" id="QuadMesh_aojho"]
-material = ExtResource("3_s03g4")
+material = ExtResource("3_sbec6")
 
 [sub_resource type="PrismMesh" id="PrismMesh_ljtth"]
-material = ExtResource("3_s03g4")
+material = ExtResource("3_sbec6")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4qtwx"]
-material = ExtResource("3_s03g4")
+material = ExtResource("3_sbec6")
 
 [sub_resource type="SphereMesh" id="SphereMesh_mbmw8"]
 lightmap_size_hint = Vector2i(17, 9)
-material = ExtResource("3_5uswt")
+material = ExtResource("4_o3xqs")
 radial_segments = 128
 rings = 128
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_8jg2j"]
-material = ExtResource("3_5uswt")
+material = ExtResource("4_o3xqs")
 radial_segments = 128
 rings = 128
 
 [sub_resource type="QuadMesh" id="QuadMesh_jnfnb"]
-material = ExtResource("3_5uswt")
+material = ExtResource("4_o3xqs")
 subdivide_width = 128
 subdivide_depth = 128
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_57m7b"]
-material = ExtResource("3_5uswt")
+material = ExtResource("4_o3xqs")
 subdivide_width = 128
 subdivide_depth = 128
 
 [sub_resource type="PrismMesh" id="PrismMesh_q3dac"]
-material = ExtResource("3_5uswt")
+material = ExtResource("4_o3xqs")
 subdivide_width = 128
 subdivide_height = 128
 subdivide_depth = 128
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_oyr0l"]
-material = ExtResource("3_5uswt")
+material = ExtResource("4_o3xqs")
 radial_segments = 128
 rings = 128
 
 [sub_resource type="BoxMesh" id="BoxMesh_tqk1a"]
-material = ExtResource("3_5uswt")
+material = ExtResource("4_o3xqs")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_nwc0k"]
 lightmap_size_hint = Vector2i(27, 12)
-material = ExtResource("5_idnq7")
+material = ExtResource("5_05o0p")
 subdivide_width = 128
 subdivide_depth = 128
 
@@ -154,7 +154,7 @@ shader_parameter/uv1_scale = Vector3(1.515, 1.175, 0.89)
 shader_parameter/uv1_offset = Vector3(0.095, -0.12, 0.175)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("6_cukbk")
+shader_parameter/texture_albedo = ExtResource("6_0tgq5")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4avy8"]
 lightmap_size_hint = Vector2i(27, 12)
@@ -164,7 +164,7 @@ subdivide_width = 128
 subdivide_depth = 16
 
 [sub_resource type="BoxMesh" id="BoxMesh_hy1u0"]
-material = ExtResource("5_idnq7")
+material = ExtResource("5_05o0p")
 
 [node name="Shader3D" type="Node3D"]
 

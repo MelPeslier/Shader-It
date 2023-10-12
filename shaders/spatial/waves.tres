@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c5rip6ynqxyl0"]
 
-[ext_resource type="Shader" path="res://shaders/3D/waves.gdshader" id="1_by1j1"]
+[ext_resource type="Shader" path="res://shaders/spatial/waves.gdshader" id="1_by1j1"]
 
 [resource]
 render_priority = 0

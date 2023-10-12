@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cagg7rs4q2scx"]
 
-[ext_resource type="Shader" path="res://shaders/3D/vertex_offset.gdshader" id="1_b52fj"]
+[ext_resource type="Shader" path="res://shaders/spatial/vertex_offset.gdshader" id="1_b52fj"]
 
 [resource]
 render_priority = 0

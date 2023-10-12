@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dwqfv5csbtdtg"]
 
-[ext_resource type="Shader" path="res://shaders/3D/behind_waves.gdshader" id="1_ibnh3"]
+[ext_resource type="Shader" path="res://shaders/spatial/behind_waves.gdshader" id="1_ibnh3"]
 
 [resource]
 render_priority = 0

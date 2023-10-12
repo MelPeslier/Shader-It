@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://wk8ek2d06uux"]
+
+[ext_resource type="Material" uid="uid://tnyed3uvj4yq" path="res://shaders/sky/bizarre_moon.tres" id="1_nbpqb"]
+
+[sub_resource type="Sky" id="Sky_s0qyo"]
+sky_material = ExtResource("1_nbpqb")
+
+[sub_resource type="Environment" id="Environment_2uot7"]
+background_mode = 2
+sky = SubResource("Sky_s0qyo")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="sky" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2uot7")
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.0784591, -0.405483, 0.910729, 0, 0.913545, 0.406737, -0.996917, -0.0319122, 0.071676, 0, 0, 0)
+light_angular_distance = 22.65
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.190809, -0.178887, -0.96519, 0, 0.983255, -0.182236, 0.981627, 0.0347722, 0.187614, 0, 1.875, 0)

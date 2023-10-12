@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c16veknunkmt0"]
 
-[ext_resource type="Shader" path="res://shaders/2D/distortion.gdshader" id="1_lmrvk"]
+[ext_resource type="Shader" path="res://shaders/canvas_item/distortion.gdshader" id="1_lmrvk"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_01o4e"]
 
